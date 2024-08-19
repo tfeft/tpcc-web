@@ -1,0 +1,112 @@
+---
+import EventCard from "./EventCard.astro";
+import { events, all_monthyears_themes, all_monthyears } from '../../utils/InitSupabase';
+function monthyear_slug(text:string) {
+    return text.toLowerCase().split(' ').join('-');
+}
+---
+<section class="px-6 py-8 mx-auto mb-12 sm:py-16 lg:py-20">
+    <header class='text-center'>
+        <h1 class="max-w-3xl px-4 mx-auto mb-8 text-3xl font-medium tracking-wide sm:px-6 md:text-5xl font-heading text-neutral-900 dark:text-neutral-50">
+            Events
+        </h1>
+    </header>
+
+    <div class="tracking-wide text-center text-neutral-600 dark:text-neutral-200">
+    {
+        all_monthyears ? (
+            <select id="list" class="px-4 py-2 pr-10 border appearance-none form-select border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 rounded-xl focus:outline-none focus:border-blue-500" onchange="fetchSelectedValue()" aria-label="Select month & year">
+            {
+                all_monthyears.map( (my) => (
+                <option value={my.monthyear}>
+                    {my.monthyear}
+                </option>
+                ))
+            }
+            </select>) : (
+            <select id="list" class="px-4 py-2 pr-10 border appearance-none form-select border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 rounded-xl focus:outline-none focus:border-blue-500" onchange="fetchSelectedValue()" aria-label="Select month & year">
+            <option value="" disabled selected>
+                Sorry, no data available.
+            </option>
+            </select>
+        )
+    }
+    </div>
+
+    <div id="show-events" class="mt-12 text-center">
+    {
+        all_monthyears_themes && all_monthyears_themes.length == 0? (
+            <div class="text-center">
+                <p class="mb-1 text-lg font-medium tracking-wide text-neutral-700 dark:text-neutral-200">
+                    No events this week.
+                </p>
+            </div>
+        ) : (
+        all_monthyears_themes && all_monthyears_themes.map( (eventitem) => (
+            <div class:list={['eventclass', monthyear_slug(eventitem.monthyear)]}>
+                <div class="text-center">
+                    <h2 class="max-w-4xl px-4 mx-auto mb-12 text-xl font-medium tracking-wide sm:px-6 md:text-3xl font-heading text-neutral-900 dark:text-neutral-50">
+                        {eventitem.theme}
+                    </h2>
+                </div>
+                <div class="grid max-w-4xl gap-10 mx-auto md:grid-cols-3">
+                    {
+                        events && events.filter( (filmitem) => (filmitem.theme == eventitem.theme) && (filmitem.monthyear == eventitem.monthyear) ).map( (film) => (
+                            <EventCard {film} />
+                            ) )
+                    }
+                </div>
+            </div>
+            ) )
+        )
+    }
+    </div>
+</section>
+
+<script type="text/javascript">
+    function monthyear_slug(text) {
+        return text.toLowerCase().split(' ').join('-');
+    }
+
+    function fetchSelectedValue(){
+        var e = document.getElementById("list");
+        var option = e.options[e.selectedIndex].value;
+
+        // all event classes
+        var allevents = document.getElementsByClassName("eventclass");
+        for (let i = 0; i < allevents.length; i++) {
+            if (!allevents[i].classList.contains('hidden')) {
+                allevents[i].classList.add('hidden');
+            }
+        }
+
+        // selected event class
+        var selected = document.getElementsByClassName(monthyear_slug(option));
+        for (let i = 0; i < selected.length; i++) {
+            if (selected[i].classList.contains('hidden')) {
+                selected[i].classList.remove('hidden');
+            }
+        }
+    }
+
+    document.getElementById("list").selectedIndex=0;
+    fetchSelectedValue();
+</script>
+
+<style>
+    select {
+        display: inline-block;
+        width: 12em;
+        font-size: 1em;
+        padding: 0.5rem 0.5rem;
+        border: 1px solid inherit;
+        font-family: inherit;
+        letter-spacing: 0.025em;
+        /** for the dropdown indicator */
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        background-size: 1em;
+    }
+</style>

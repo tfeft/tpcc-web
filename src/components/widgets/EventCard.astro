@@ -1,0 +1,50 @@
+---
+import { Image } from "@astrojs/image/components";
+import { Icon } from "astro-icon";
+import { date_to_string } from "../../utils/TStoString";
+const {film} = Astro.props;
+---
+<div class="group">
+    <div class="w-full aspect-square">
+        <Image src={film.poster} class="object-contain w-full mx-auto" width={312} alt={film.title} aspectRatio={312/468} loading="eager" />
+    </div>
+
+    <div class="mt-4 tracking-wide text-center">
+        <p class="text-sm font-medium text-neutral-500 dark:text-neutral-400">{film.date? date_to_string(film.date) : date_to_string(film.online_date)}</p>
+        <h3 class="text-xl font-medium font-heading text-neutral-900 dark:text-neutral-50">{film.title}</h3>
+        <h4 class="text-base font-medium text-neutral-700 dark:text-neutral-200">{film.director}</h4>
+        <p class="text-sm font-medium text-neutral-500 dark:text-neutral-400">{film.year}</p>
+        <em class="text-sm font-medium text-neutral-500 dark:text-neutral-400"> {film.notes}</em>
+        {
+            film.locations && (
+                <a
+                    href={film.locations.url}
+                    aria-label="Venue"
+                    class="mb-1 wrap md:justify-start text-sm font-medium tracking-wide text-neutral-500 hover:text-primary-600 dark:text-neutral-400 dark:hover:text-secondary-400"
+                >
+                    <p class="text-sm font-medium">{film.locations.name}<br>{film.cities.city}</p>
+                </a>
+            )
+        }
+    </div>
+
+    <div class="flex items-center justify-center max-w-full flex-inline wrap">
+        <a href={film.letterboxd} aria-label="Letterboxd" class="text-neutral-700 dark:text-neutral-200 focus:outline-none focus:ring-4 focus:ring-neutral-200 dark:focus:ring-neutral-700 rounded-lg text-sm p-2.5 inline-flex items-center">
+            <Icon name="letterboxd" class="w-6 h-6"/>
+        </a>
+        <a href={film.imdb} aria-label="IMDb" class="text-neutral-700 dark:text-neutral-200 focus:outline-none focus:ring-4 focus:ring-neutral-200 dark:focus:ring-neutral-700 rounded-lg text-sm p-2.5 inline-flex items-center">
+            <Icon name="imdb" class="w-6 h-6"/>
+        </a>
+        <a href={film.youtube} aria-label="Youtube stream" class="youtube text-neutral-700 dark:text-neutral-200 focus:outline-none focus:ring-4 focus:ring-neutral-200 dark:focus:ring-neutral-700 rounded-lg text-sm p-2.5 inline-flex items-center">
+                <Icon name="youtube" class="w-6 h-6"/>
+        </a>
+    </div>
+</div>
+
+<style>
+a:not([href]), a[href=''], a[href="#"]{
+        display: none;
+    }
+</style>
+
+

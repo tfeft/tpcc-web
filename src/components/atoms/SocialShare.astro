@@ -1,0 +1,47 @@
+---
+import { Icon } from 'astro-icon';
+const { text, url, class: className = 'inline-block' } = Astro.props;
+---
+
+<div class={className}>
+	<span class="font-normal tracking-wide align-super text-neutral-500 dark:text-neutral-400">Share</span>
+	<button
+		class="ml-2 hover:text-neutral-900 dark:hover:text-neutral-50"
+		title="Twitter Share"
+		data-aw-social-share="twitter"
+		data-aw-url={url}
+		data-aw-text={text}
+		><Icon name="twitter-x-fill" class="w-5 h-5" />
+	</button>
+	<button
+		class="ml-2 hover:text-neutral-900 dark:hover:text-neutral-50"
+		title="Facebook Share"
+		data-aw-social-share="facebook"
+		data-aw-url={url}
+		><Icon name="ri:facebook-circle-fill" class="w-5 h-5" />
+	</button>
+	<button
+		class="ml-2 hover:text-neutral-900 dark:hover:text-neutral-50"
+		title="Telegram Share"
+		data-aw-social-share="telegram"
+		data-aw-url={url}
+		data-aw-text={text}
+		><Icon name="fa-brands:telegram-plane" class="w-5 h-5" />
+	</button>
+	<button
+		class="ml-2 hover:text-neutral-900 dark:hover:text-neutral-50"
+		title="Whatsapp Share"
+		data-aw-social-share="whatsapp"
+		data-aw-url={url}
+		data-aw-text={text}
+		><Icon name="ri:whatsapp-fill" class="w-5 h-5" />
+	</button>
+	<button
+		class="ml-2 hover:text-neutral-900 dark:hover:text-neutral-50"
+		title="Email Share"
+		data-aw-social-share="mail"
+		data-aw-url={url}
+		data-aw-text={text}
+		><Icon name="ri:mail-fill" class="w-5 h-5" />
+	</button>
+</div>

@@ -1,0 +1,54 @@
+---
+import { SITE, BLOG } from '~/config.mjs';
+
+import Layout from '~/layouts/BlogLayout.astro';
+import BlogList from '~/components/blog/List.astro';
+import Headline from '~/components/blog/Headline.astro';
+import Pagination from '~/components/atoms/Pagination.astro';
+
+import { fetchPosts } from '~/utils/posts.js';
+import { getCanonical, getPermalink, cleanSlug, AUTHOR_BASE } from '~/utils/permalinks';
+
+export async function getStaticPaths({ paginate } : any) {
+	if (BLOG?.disabled || BLOG?.author?.disabled) return [];
+
+	const posts = await fetchPosts();
+
+	const authors = new Set();
+	posts.map((post:any) => {
+		Array.isArray(post.authors) && post.authors.map((author:string) => authors.add(author.toLowerCase()));
+	});
+
+	return Array.from(authors).map((author) =>
+		paginate(
+			posts.filter((post:any) => Array.isArray(post.authors) && post.authors.find((elem:string) => elem.toLowerCase() === author)),
+			{
+				params: { author: cleanSlug(author), authors: AUTHOR_BASE || undefined },
+				pageSize: BLOG.postsPerPage,
+				props: { author },
+			}
+		)
+	);
+}
+const { page, author } = Astro.props;
+
+const currentPage = page.currentPage ?? 1;
+
+const meta = {
+	title: `${author} ${currentPage > 1 ? `— Page ${currentPage} ` : ''}| ${SITE.name}`,
+	description: SITE.description,
+	canonical: getCanonical(getPermalink(author, 'author')),
+	noindex: true,
+};
+---
+
+<Layout meta={meta}>
+	<Fragment slot="title">
+		{author}
+	</Fragment>
+	<section class="px-4 md:px-6 pb-12 sm:pb-16 lg:pb-20 mx-auto max-w-4xl">
+		<Headline><span class="capitalize">{author.replaceAll('-', ' ')}</span></Headline>
+		<BlogList posts={page.data} />
+		<Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+	</section>
+</Layout>

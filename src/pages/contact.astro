@@ -1,0 +1,16 @@
+---
+import { SITE } from '~/config.mjs';
+import { getCanonical, getRelativeLink } from '~/utils/permalinks';
+import Layout from '~/layouts/PageLayout.astro';
+import ContactContent from '~/components/widgets/ContactContent.astro';
+
+const meta = {
+	title: `Contact | ${SITE.name}`,
+	description: SITE.description,
+	canonical: getCanonical(getRelativeLink('contact')),
+};
+---
+
+<Layout meta={{ meta }}>
+	<ContactContent />
+</Layout>

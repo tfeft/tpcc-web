@@ -1,0 +1,56 @@
+---
+import { getRelativeLink } from '~/utils/permalinks';
+import { Icon } from 'astro-icon';
+
+const social = [
+	{ label: 'Twitter', icon: 'twitter-x-fill', href: 'https://twitter.com/parallelcinemas' },
+	{ label: 'Instagram', icon: 'ri:instagram-fill', href: 'https://instagram.com/theparallelcinemaclub' },
+	{ label: 'Facebook', icon: 'ri:facebook-circle-fill', href: 'https://www.facebook.com/theparallelcinemaclub/' },
+	{ label: 'Youtube', icon: 'ri:youtube-fill', href: 'https://www.youtube.com/channel/UC785z0vKfLVXfUjKum_x5_g' },
+	{ label: 'Letterboxd', icon: 'letterboxd-mono', href: 'https://letterboxd.com/parallelcinema/' },
+	{ label: 'RSS', icon: 'ri:rss-fill', href: getRelativeLink('/rss.xml') },
+];
+---
+
+<section class="py-8 mx-auto sm:py-16 lg:py-20">
+	<article>
+		<header class="text-center">
+			<h1
+				class="max-w-3xl px-4 mx-auto mb-8 text-3xl font-medium tracking-wide sm:px-6 md:text-5xl text-neutral-900 dark:text-neutral-50 font-heading"
+			>
+				Let’s work together!
+			</h1>
+		</header>
+		<div
+			class="container max-w-4xl px-6 mx-auto mt-8 tracking-wide prose prose-lg text-center sm:px-6 lg:prose-xl prose-neutral dark:prose-invert prose-md prose-quoteless prose-a:text-primary-600 dark:prose-a:text-secondary-400 prose-img:rounded-md"
+		>
+			<p>
+				Do you want to collaborate together or just have a simple question you want to ask us? Send us an email and
+				we'll get back to you within a week.
+			</p>
+			<p>
+				You can write to us at <a
+					href="mailto:theparallelcinemaclub@gmail.com"
+					class="text-primary-600 dark:text-secondary-400">theparallelcinemaclub@gmail.com</a
+				>
+			</p>
+		</div>
+		<div class="container flex flex-col items-center justify-center max-w-4xl px-6 mx-auto mt-8 sm:flex-row">
+			<ul class="flex mb-4 md:order-1 md:mb-0">
+				{
+					social.map(({ label, href, icon }) => (
+						<li>
+							<a
+								class="text-neutral-700 dark:text-neutral-200 hover:text-primary-600 dark:hover:text-secondary-600 focus:outline-none focus:ring-4 focus:ring-neutral-200 dark:focus:ring-neutral-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+								aria-label={label}
+								href={href}
+							>
+								<Icon name={icon} class="w-5 h-5" />
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</article>
+</section>

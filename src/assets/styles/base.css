@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	.btn {
+		@apply inline-flex items-center justify-center px-6 py-2 text-base font-medium tracking-wide text-center transition duration-200 ease-in bg-transparent border border-solid rounded-xl border-neutral-400 text-neutral-700 md:px-6 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2 hover:border-neutral-600 dark:text-neutral-200 dark:border-neutral-500 dark:hover:border-neutral-800;
+	}
+
+	.btn-ghost {
+		@apply font-medium tracking-wide border border-solid border-primary-200 dark:border-secondary-900 text-primary-600 dark:text-secondary-400 hover:text-neutral-50 dark:hover:text-neutral-900 hover:bg-primary-600 hover:border-primary-600 dark:hover:bg-secondary-400 dark:hover:border-secondary-400;
+	}
+
+	.btn-primary {
+		@apply font-medium tracking-wide border border-solid bg-primary-600 dark:bg-secondary-400 text-neutral-50 dark:text-neutral-900 border-primary-600 dark:border-secondary-400 hover:bg-transparent dark:hover:bg-transparent hover:border-primary-600 dark:hover:border-secondary-400 hover:text-primary-600 dark:hover:text-secondary-400;
+	}
+}
+
+.dropdown:hover .dropdown-menu {
+	display: block;
+}
+
+[astro-icon].icon-light > * {
+	stroke-width: 1.2;
+}
+
+[data-aw-toggle-menu] path {
+	@apply transition;
+}
+
+[data-aw-toggle-menu].expanded g > path:first-child {
+	@apply -rotate-45 translate-y-[15px] translate-x-[-3px];
+}
+
+[data-aw-toggle-menu].expanded g > path:last-child {
+	@apply rotate-45 translate-y-[-8px] translate-x-[14px];
+}

@@ -1,0 +1,23 @@
+---
+import Grid from '~/components/blog/Grid.astro';
+import { Icon } from 'astro-icon';
+import { getRelativeLink } from '~/utils/permalinks';
+import { findLatestPosts } from '~/utils/posts';
+
+const count = 3;
+const posts = await findLatestPosts({ count });
+---
+
+<section class="max-w-6xl px-6 py-12 mx-auto">
+	<div class="flex flex-col flex-wrap items-center gap-4 mb-4 md:flex-row md:items-center md:justify-between md:mb-6">
+		<h2 class="mb-2 text-3xl font-medium tracking-wide md:text-5xl font-heading text-neutral-900 dark:text-neutral-50">
+			Latest Posts
+		</h2>
+		<div class="w-fit">
+			<a class="btn btn-ghost" href={getRelativeLink('blog')} target="_self" rel="noopener">
+				Read the blog <Icon name="ri:arrow-right-s-line" class="w-5 h-5 mx-1" />
+			</a>
+		</div>
+	</div>
+	<Grid posts={posts} />
+</section>

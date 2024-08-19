@@ -1,0 +1,119 @@
+---
+import { Picture } from '@astrojs/image/components';
+import image from '../../assets/images/bartonfink.jpeg';
+---
+
+<section class="py-8 mx-auto sm:py-16 lg:py-20">
+	<article>
+		<header class="text-center">
+			<h1
+				class="max-w-4xl px-4 mx-auto mb-8 text-3xl font-medium sm:px-6 md:text-5xl text-neutral-900 dark:text-neutral-50 font-heading"
+			>
+				Write for us!
+			</h1>
+			<Picture
+				src={image}
+				class="max-w-full mx-auto mt-4 mb-6 lg:max-w-6xl sm:rounded-xl bg-neutral-400 dark:bg-neutral-700"
+				widths={[400, 900]}
+				sizes="(max-width: 900px) 400px, 900px"
+				alt="A shot from Joel & Ethan Coens' 'Barton Fink'"
+				loading="eager"
+				aspectRatio={16 / 9}
+				width={900}
+				height={506}
+			/>
+		</header>
+		<div
+			class="container max-w-4xl px-6 mx-auto mt-8 tracking-wide prose prose-lg sm:px-6 prose-neutral lg:prose-xl dark:prose-invert prose-md prose-quoteless prose-headings:font-heading prose-headings:font-medium prose-a:text-primary-600 dark:prose-a:text-secondary-400 prose-img:rounded-md"
+		>
+			<p>
+				Welcome to The Parallel Cinema Club's blog, a platform where our members can share their insights and passion
+				for arthouse cinema. We value diverse perspectives and aim to create a space for thoughtful exploration of
+				cinematic artistry. Here are some guidelines to ensure a harmonious and enriching blogging experience:
+			</p>
+			<ol>
+				<li class="mb-2">
+					<b>Content Focus</b>
+					<ul class="list-outside list-disc ml-4">
+						<li>Aim for a minimum of 600-800 words per article.</li>
+						<li>
+							Primarily focus on arthouse cinema, exploring its nuances, unique styles, and impact on the audience.
+							However, occasional insights into distinctive aspects of mainstream cinema are permissible.
+						</li>
+					</ul>
+				</li>
+				<li class="mb-2">
+					<b>Originality</b><br />
+					All contributions must be original works created by the author. Plagiarism is strictly prohibited.
+				</li>
+				<li class="mb-2">
+					<b>Copyright Ownership</b><br />
+					Authors retain the copyright ownership of their works. By submitting an article, authors grant The Parallel Cinema
+					Club the right to publish and share the content on our blog and associated platforms.
+				</li>
+				<li class="mb-2">
+					<b>Writing Style</b><br />
+					Maintain a clear and engaging writing style. Use a mix of descriptive language, analysis, and personal reflections
+					to enhance the reader's understanding and connection to the subject matter.
+				</li>
+				<li class="mb-2">
+					<b>Formatting</b>
+					<ul class="list-outside list-disc ml-4">
+						<li>Ensure proper formatting with clear headings, subheadings, and paragraphs for easy readability.</li>
+						<li>Include relevant images or media to complement your content.</li>
+					</ul>
+				</li>
+				<li class="mb-2">
+					<b>Citations</b><br />
+					If you use quotes, references, or information from other sources, provide proper citations.
+				</li>
+				<li class="mb-2">
+					<b>Tone</b><br />
+					Encourage a respectful and constructive tone. Disagreements are fine, but maintain a positive and open-minded approach.
+				</li>
+				<li class="mb-2">
+					<b>Editing and Feedback</b><br />
+					Our editorial team may provide feedback or suggestions to enhance the overall quality of the content. Be open to
+					revisions that maintain the integrity of your voice and perspective.
+				</li>
+				<li class="mb-2">
+					<b>Submission Process</b>
+					<ul class="list-outside list-disc ml-4">
+						<li>Submit your articles in a Word document or Google Docs format.</li>
+						<li>
+							Include a brief author bio with your submission. The blog is open for everyone, and has no educational or
+							professional requirements. Hence, all nationalities, age groups, professionals, genders, and ethnic groups
+							can contribute to the club.
+						</li>
+					</ul>
+				</li>
+				<li class="mb-2">
+					<b>Frequency</b><br />
+					We welcome regular contributions, but there's no strict schedule. Quality is prioritized over quantity.
+				</li>
+				<li class="mb-2">
+					<b>Promotion</b><br />
+					Feel free to share your published articles on your personal platforms. We encourage members to celebrate and discuss
+					their work.
+				</li>
+				<li class="mb-2">
+					<b>Relevance to The Parallel Cinema Club</b><br />
+					While we encourage diverse topics, ensure your content aligns with the essence of The Parallel Cinema Club.
+				</li>
+			</ol>
+			<p>
+				By contributing to our blog, you become an essential part of our community's dialogue on arthouse cinema. Your
+				unique perspectives and insights contribute to the enrichment of our shared cinematic experience. We appreciate
+				your commitment to the art of storytelling through film.
+			</p>
+			<p>
+				Send us your writings to <a href="mailto:theparallelcinemaclub@gmail.com">theparallelcinemaclub@gmail.com</a>.
+			</p>
+			<p>Happy writing!</p>
+			<em>
+				Nikhil Waiker<br />
+				Editor, The Parallel Cinema Club
+			</em>
+		</div>
+	</article>
+</section>

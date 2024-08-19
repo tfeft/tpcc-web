@@ -1,0 +1,26 @@
+---
+import { Icon } from 'astro-icon';
+import { getRelativeLink } from '~/utils/permalinks';
+const { prevUrl, nextUrl, prevText = 'Newer posts', nextText = 'Older posts' } = Astro.props;
+---
+
+{
+	(prevUrl || nextUrl) && (
+		<div class="container flex">
+			<div class="container flex flex-row justify-between mx-auto">
+				<a href={getRelativeLink(prevUrl)} class={`btn btn-ghost px-3 mr-2 ${!prevUrl ? 'invisible' : ''}`}>
+					<div class="flex flex-row align-middle">
+						<Icon name="ri:arrow-left-s-line" class="w-6 h-6" />
+						<p class="ml-2">{prevText}</p>
+					</div>
+				</a>
+				<a href={getRelativeLink(nextUrl)} class={`btn btn-ghost px-3 ${!nextUrl ? 'invisible' : ''}`}>
+					<div class="flex flex-row align-middle">
+						<span class="mr-2">{nextText}</span>
+						<Icon name="ri:arrow-right-s-line" class="w-6 h-6" />
+					</div>
+				</a>
+			</div>
+		</div>
+	)
+}

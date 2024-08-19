@@ -1,0 +1,24 @@
+---
+import { getRelativeLink } from '~/utils/permalinks';
+---
+
+<!-- Standard favicon -->
+<link rel="icon" href={getRelativeLink('/favicon.ico')} />
+
+<!-- iOS icons -->
+<link rel="apple-touch-icon" sizes="180x180" href={getRelativeLink('/favicon-180x180.png')} />
+<link rel="apple-touch-icon" sizes="152x152" href={getRelativeLink('/favicon-152x152.png')} />
+<link rel="apple-touch-icon" sizes="144x144" href={getRelativeLink('/favicon-144x144.png')} />
+<link rel="apple-touch-icon" sizes="120x120" href={getRelativeLink('/favicon120x120.png')} />
+
+<!-- Android icons -->
+<link rel="icon" type="image/png" sizes="192x192" href={getRelativeLink('/favicon-192x192.png')} />
+<link rel="icon" type="image/png" sizes="32x32" href={getRelativeLink('/favicon-32x32.png')} />
+<link rel="icon" type="image/png" sizes="16x16" href={getRelativeLink('/favicon-16x16.png')} />
+
+{/* Safari mask-icon */}
+<link rel="mask-icon" href={getRelativeLink('favicon-mask-icon.svg')} color="#E11D48" />
+
+{/* Tile icon for Windows */}
+<meta name="msapplication-TileImage" content={getRelativeLink('favicon-144x144.png')} />
+<meta name="msapplication-TileColor" content="#E11D48" />

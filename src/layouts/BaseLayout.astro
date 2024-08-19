@@ -1,0 +1,33 @@
+---
+import '~/assets/styles/base.css';
+
+import MetaTags from '~/components/core/MetaTags.astro';
+import BasicScripts from '~/components/core/BasicScripts.astro';
+import  SpeedInsights  from "@vercel/speed-insights/astro"
+
+const { meta = {} } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="motion-safe:scroll-smooth 2xl:text-[20px]">
+	<head>
+		<link rel="stylesheet" href="https://use.typekit.net/xkl6xit.css">
+		<MetaTags {...meta} />
+		<script
+			async
+			defer
+			data-website-id="e52b60fb-f73d-48c5-ad72-9c9c1a17662a"
+			src="https://umami-jeffreyjacob.vercel.app/umami.js"
+		></script>
+	</head>
+
+	<body class="antialiased tracking-tight text-neutral-900 dark:text-neutral-50 bg-neutral-100 dark:bg-neutral-900">
+		<slot />
+		<BasicScripts />
+		<style is:global>
+			img {
+				content-visibility: auto;
+			}
+		</style>
+	</body>
+</html>

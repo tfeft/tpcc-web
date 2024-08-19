@@ -1,0 +1,39 @@
+---
+import { getRelativeLink } from '~/utils/permalinks';
+import { Icon } from 'astro-icon';
+import UpcomingEvent from './UpcomingEvent.astro';
+---
+
+<section>
+	<div class="max-w-6xl px-6 pt-8 mx-auto">
+		<div
+			class="max-w-5xl px-6 py-8 mx-auto text-center border shadow-xl bg-primary-100/50 border-primary-200 shadow-neutral-200 dark:bg-secondary-800/10 dark:border-secondary-950 dark:shadow-xl dark:shadow-secondary-950 rounded-2xl"
+		>
+			<UpcomingEvent />
+		</div>
+		<div class="max-w-5xl pt-24 pb-12 mx-auto text-center">
+			<h1 class="mb-6 text-4xl font-medium tracking-wide md:text-5xl font-heading text-neutral-900 dark:text-neutral-50">
+				Rediscovering cinema, <span class="text-primary-600 dark:text-secondary-400">together</span>.
+			</h1>
+			<div class="max-w-4xl mx-auto">
+				<p class="mb-6 text-base font-normal tracking-wide md:text-lg text-neutral-500 dark:text-neutral-400">
+					<span class="font-medium">The Parallel Cinema Club</span> is a community-run film society based out of Bangalore.
+					We are a group of film enthusiasts who meet up once a week to discuss the reel world, auteurs and themes, and occasionally
+					host guest lectures.
+				</p>
+
+				<div class="w-full">
+					<a
+						class="btn btn-ghost"
+						href={getRelativeLink('about')}
+						aria-label="Learn more about TPCC"
+						target="_self"
+						rel="noopener"
+					>
+						Learn more about TPCC <Icon name="ri:arrow-right-s-line" class="w-5 h-5 mx-1" />
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

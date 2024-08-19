@@ -1,0 +1,16 @@
+---
+import { SITE } from '~/config.mjs';
+import { getCanonical, getRelativeLink } from '~/utils/permalinks';
+import Layout from '~/layouts/PageLayout.astro';
+import EventsContent from '~/components/widgets/EventsContent.astro';
+
+const meta = {
+	title: `Events | ${SITE.name}`,
+	description: SITE.description,
+	canonical: getCanonical(getRelativeLink('events')),
+};
+---
+
+<Layout meta={{ meta }}>
+	<EventsContent />
+</Layout>

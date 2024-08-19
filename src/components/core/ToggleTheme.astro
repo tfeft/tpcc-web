@@ -1,0 +1,14 @@
+---
+import { Icon } from 'astro-icon';
+
+const {
+	label = 'Toggle between Dark and Light mode',
+	class:
+		className = 'text-neutral-700 dark:text-neutral-400 hover:text-primary-600 dark:hover:text-secondary-400 focus:outline-none focus:ring-4 focus:ring-neutral-200 dark:focus:ring-neutral-700 rounded-lg text-sm p-2.5 inline-flex items-center',
+} = Astro.props;
+---
+
+<button type="button" class={className} aria-label={label} data-aw-toggle-color-scheme>
+	<Icon name="ri:sun-fill" class="hidden w-6 h-6 dark:block" />
+	<Icon name="ri:moon-fill" class="w-6 h-6 dark:hidden" />
+</button>

@@ -1,0 +1,16 @@
+---
+import {SITE} from '~/config.mjs';
+import { getCanonical, getRelativeLink } from '~/utils/permalinks';
+import Layout from '~/layouts/PageLayout.astro';
+import WriteForUsContent from '~/components/widgets/WriteForUsContent.astro';
+
+const meta = {
+	title: `Write for Us! | ${SITE.name}`,
+	description: SITE.description,
+	canonical: getCanonical(getRelativeLink('writeforus')),
+};
+---
+
+<Layout meta={{ meta }}>
+	<WriteForUsContent />
+</Layout>

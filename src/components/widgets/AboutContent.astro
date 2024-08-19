@@ -1,0 +1,53 @@
+---
+import { Picture } from '@astrojs/image/components';
+import image from '../../assets/images/closeup.jpg';
+---
+
+<section class="py-12 mx-auto sm:py-16 lg:py-20">
+	<article>
+		<header class="text-center">
+			<h1
+				class="max-w-4xl px-4 mx-auto mb-8 text-3xl font-medium sm:px-6 md:text-5xl text-neutral-900 dark:text-neutral-50 font-heading"
+			>
+				Rediscovering cinema, together.
+			</h1>
+			<Picture
+				src={image}
+				class="max-w-full mx-auto mt-4 mb-6 lg:max-w-6xl sm:rounded-xl bg-neutral-400 dark:bg-neutral-700"
+				widths={[400, 900]}
+				sizes="(max-width: 900px) 400px, 900px"
+				alt="A shot from Abbas Kiarostami's 'Close Up'"
+				loading="eager"
+				aspectRatio={16 / 9}
+				width={900}
+				height={506}
+			/>
+		</header>
+		<div
+			class="container max-w-4xl px-6 mx-auto mt-8 tracking-wide prose prose-lg sm:px-6 prose-neutral lg:prose-xl dark:prose-invert prose-md prose-quoteless prose-headings:font-heading prose-headings:font-medium prose-a:text-primary-600 dark:prose-a:text-secondary-400 prose-img:rounded-md"
+		>
+			<p>
+				We are a community of dedicated film enthusiasts who are passionate about the art of cinema. We believe that
+				films can be more than just entertainment, and that they have the power to inspire, provoke, and challenge. Our
+				club is dedicated to exploring the vast world of arthouse cinema, and to providing a platform for members to
+				discover, discuss, and appreciate films that push the boundaries of storytelling and filmmaking.
+			</p>
+			<p>
+				Our club focuses on films that are often overlooked by mainstream audiences and that challenge the conventional
+				Hollywood narrative. From international films to experimental and avant-garde films, we are committed to
+				providing a diverse and exciting film program. Our screenings take place regularly and include feature films,
+				short films, and documentaries.
+			</p>
+			<p>
+				We also host special events such as midnight screenings and filmmaker Q&A's to encourage engagement and
+				creativity among our members. Our community is open to anyone who is passionate about film and we welcome new
+				members who share our interests.
+			</p>
+			<p>
+				Whether you are a seasoned arthouse film buff or just starting out, we welcome you to join us as we explore the
+				world of cinema together. Our club is a place where you can find like-minded people, engage in discussions and
+				develop a deeper understanding of the art of film.
+			</p>
+		</div>
+	</article>
+</section>

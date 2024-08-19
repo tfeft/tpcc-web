@@ -1,0 +1,73 @@
+---
+// import { Icon } from 'astro-icon';
+import Logo from '~/components/atoms/Logo.astro';
+import ToggleTheme from '~/components/core/ToggleTheme.astro';
+import ToggleMenu from '~/components/core/ToggleMenu.astro';
+
+import { getHomePermalink, getBlogPermalink, getRelativeLink } from '~/utils/permalinks';
+---
+
+<header
+	class="sticky top-0 z-40 flex-none w-full mx-auto bg-neutral-100 dark:bg-neutral-900 md:backdrop-blur-sm"
+	id="header"
+>
+	<div class="w-full max-w-6xl px-3 py-3 mx-auto md:flex md:justify-between md:px-4">
+		<div class="flex justify-between">
+			<a class="flex items-center" href={getHomePermalink()}>
+				<Logo />
+			</a>
+			<div class="flex items-center md:hidden">
+				<ToggleTheme />
+				<ToggleMenu />
+			</div>
+		</div>
+		<nav
+			class="items-center w-full md:w-auto hidden md:flex h-[calc(100vh-100px)] md:h-auto overflow-y-auto md:overflow-visible"
+			aria-label="Main navigation"
+		>
+			<ul
+				class="flex flex-col w-full pt-8 text-xl font-medium tracking-wide md:pt-0 md:flex-row md:self-center md:w-auto md:text-base"
+			>
+				<li>
+					<a
+						class="flex items-center px-4 py-3 transition duration-150 ease-in-out text-neutral-700 dark:text-neutral-400 hover:text-primary-600 dark:hover:text-secondary-400"
+						href={getRelativeLink('about')}
+						>About
+					</a>
+				</li>
+				<li>
+					<a
+						class="flex items-center px-4 py-3 transition duration-150 ease-in-out text-neutral-700 dark:text-neutral-400 hover:text-primary-600 dark:hover:text-secondary-400"
+						href={getRelativeLink('events')}
+						>Events
+					</a>
+				</li>
+				<li>
+					<a
+						class="flex items-center px-4 py-3 transition duration-150 ease-in-out text-neutral-700 dark:text-neutral-400 hover:text-primary-600 dark:hover:text-secondary-400"
+						href={getBlogPermalink()}>Blog</a
+					>
+				</li>
+				<li>
+					<a
+						class="flex items-center px-4 py-3 transition duration-150 ease-in-out text-neutral-700 dark:text-neutral-400 hover:text-primary-600 dark:hover:text-secondary-400"
+						href={getRelativeLink('contact')}
+						>Contact
+					</a>
+				</li>
+				<li>
+					<a
+						class="flex items-center px-4 py-3 transition duration-150 ease-in-out text-neutral-700 dark:text-neutral-400 hover:text-primary-600 dark:hover:text-secondary-400"
+						href={getRelativeLink('write-for-us')}
+						>Write for Us
+					</a>
+				</li>
+			</ul>
+			<div class="flex items-center mb-4 ml-2 md:self-center md:mb-0">
+				<div class="items-center hidden md:flex">
+					<ToggleTheme iconClass="w-5 h-5" />
+				</div>
+			</div>
+		</nav>
+	</div>
+</header>

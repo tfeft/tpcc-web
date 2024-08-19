@@ -1,0 +1,82 @@
+---
+import { Icon } from 'astro-icon';
+
+const items = [
+	[
+		{
+			question: 'What is the format of your weekly meetings?',
+			answer:
+				'Our weekly meetings consist of a screening of an arthouse film, followed by a discussion. The discussion is led by one of our members, or sometimes a guest speaker, and encourages members to share their thoughts and interpretations of the film.',
+		},
+		{
+			question: 'How do I become a member of the club?',
+			answer:
+				'To become a member of our club, all you need to do is attend one of our meetings and sign up. Membership is free, and we welcome anyone who is passionate about arthouse cinema.',
+		},
+		{
+			question: 'What types of films do you screen?',
+			answer:
+				'We screen a wide variety of arthouse films, including international films, independent films, experimental and avant-garde films, and documentaries. We strive to provide a diverse and exciting film program that challenges the conventions of mainstream cinema.',
+		},
+		{
+			question: 'Are the screenings open to the public?',
+			answer:
+				'Yes, our screenings are open to the public, however, we encourage members to RSVP so we can plan for the event accordingly.',
+		},
+	],
+	[
+		{
+			question: 'Are there any age restrictions to attend the screening?',
+			answer:
+				'Our screenings are open to adults of all ages. However, please note that some of the films we screen may contain mature themes and language, and discretion is advised.',
+		},
+		{
+			question: 'Are the online meetings different from the offline meetings?',
+			answer:
+				"The format of our online and offline meetings are similar, consisting of a discussion and on special occasions, a Q&A session with the guest speaker. The main difference is the location, online meetings will be held via Google Meet, whereas offline meetings will be held at <a href='https://dialogues.space/cowork/dialogues-jp-nagar/25/' class='text-primary-600 dark:text-secondary-400'>Dialogues Cafe</a>.",
+		},
+		{
+			question: 'How do I participate in the discussion during online meetings?',
+			answer:
+				'During the online meetings, the members can discuss their opinions on the film and ask questions in real time. We also have a Q&A session where members can ask questions on chat or voice chat to the guest speakers if there are any. Additionally, members are welcome to continue the discussion after the meeting on our online forum or social media channels.',
+		},
+	],
+];
+---
+
+<div class="max-w-6xl px-6 mx-auto">
+	<div class="my-6 text-center md:mx-auto md:max-w-3xl">
+		<h2
+			class="text-3xl font-medium tracking-wide md:text-5xl md:mx-auto font-heading text-neutral-900 dark:text-neutral-50"
+		>
+			Frequently Asked Questions
+		</h2>
+	</div>
+	<div class="max-w-screen-xl sm:mx-auto">
+		<div class="grid grid-cols-1 gap-6 md:gap-x-12 md:grid-cols-2">
+			{
+				items.map((subitems) => (
+					<div class="space-y-8">
+						{subitems.map(({ question, answer }) => (
+							<div>
+								<p class="mb-3 text-xl font-medium font-heading tracking-wide text-neutral-900 dark:text-neutral-50">
+									<Icon
+										name="ri:arrow-right-down-line"
+										class="inline-block w-7 h-7 text-primary-600 dark:text-secondary-400"
+									/>
+									{question}
+								</p>
+								{answer.split('\n\n').map((paragraph) => (
+									<p
+										class="mb-2 text-base font-normal tracking-wide text-neutral-500 dark:text-neutral-400"
+										set:html={paragraph}
+									/>
+								))}
+							</div>
+						))}
+					</div>
+				))
+			}
+		</div>
+	</div>
+</div>

@@ -1,0 +1,27 @@
+---
+import { SITE } from '~/config.mjs';
+import { getCanonical, getHomePermalink } from '~/utils/permalinks';
+import Layout from '~/layouts/PageLayout.astro';
+import { inject } from '@vercel/analytics';
+import Hero from '~/components/widgets/Hero.astro';
+// import LiveStreamsOnYoutube from '~/components/widgets/LiveStreamsOnYoutube.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import LatestPosts from '~/components/blog/LatestPosts.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const meta = {
+	title: SITE.title,
+	description: SITE.description,
+	canonical: getCanonical(getHomePermalink()),
+};
+
+inject();
+---
+
+<Layout {meta}>
+	<Hero />
+	<!-- <LiveStreamsOnYoutube /> -->
+	<FAQs />
+	<LatestPosts />
+	<CallToAction />
+</Layout>

@@ -1,0 +1,93 @@
+---
+import { Icon } from 'astro-icon';
+import { getHomePermalink, getRelativeLink } from '~/utils/permalinks';
+import Logo from '../atoms/Logo.astro';
+
+const year = new Date().getFullYear();
+
+const links = [
+	{
+		title: 'About Us',
+		items: [
+			{ title: 'About', href: '/about' },
+			{ title: 'Events', href: '/events' },
+			{ title: 'Blog', href: '/blog' },
+			{ title: 'Contact', href: '/contact' },
+			{ title: 'Write for Us', href: '/write-for-us' },
+		],
+	},
+	{
+		title: 'Join Our Community',
+		items: [
+			{ title: 'Whatsapp Group', href: 'https://chat.whatsapp.com/Km50jJ8HHk37DvGkh7sSzh' },
+			{ title: 'Telegram Group', href: 'https://tx.me/+XDPmzEdOXdc1ODJl' },
+		],
+	},
+];
+
+const social = [
+	{ label: 'Twitter', icon: 'twitter-x-fill', href: 'https://twitter.com/parallelcinemas' },
+	{ label: 'Instagram', icon: 'ri:instagram-fill', href: 'https://instagram.com/theparallelcinemaclub' },
+	{ label: 'Facebook', icon: 'ri:facebook-circle-fill', href: 'https://www.facebook.com/theparallelcinemaclub/' },
+	{ label: 'Youtube', icon: 'ri:youtube-fill', href: 'https://www.youtube.com/channel/UC785z0vKfLVXfUjKum_x5_g' },
+	{ label: 'Letterboxd', icon: 'letterboxd-mono', href: 'https://letterboxd.com/parallelcinema/' },
+	{ label: 'RSS', icon: 'ri:rss-fill', href: getRelativeLink('/rss.xml') },
+];
+---
+
+<footer class="bg-neutral-100 dark:bg-neutral-900">
+	<div class="max-w-6xl px-6 mx-auto sm:px-6">
+		<div class="grid grid-cols-12 gap-4 py-6 gap-y-8 sm:gap-6 md:py-6">
+			<div class="col-span-12 lg:col-span-4">
+				<a class="flex items-center" href={getHomePermalink()} aria-label="The Parallel Cinema Club">
+					<Logo />
+				</a>
+			</div>
+			{
+				links.map(({ items }) => (
+					<div class="col-span-6 md:col-span-3 lg:col-span-2">
+						{items && Array.isArray(items) && items.length > 0 && (
+							<ul>
+								{items.map(({ title, href }) => (
+									<li class="mb-2">
+										<a
+											class="text-sm font-medium tracking-wider transition duration-150 ease-in-out text-neutral-500 dark:text-neutral-400 hover:text-primary-600 dark:hover:text-secondary-400"
+											href={href}
+										>
+											{title}
+										</a>
+									</li>
+								))}
+							</ul>
+						)}
+					</div>
+				))
+			}
+		</div>
+		<div class="py-6 md:flex md:items-center md:justify-between md:py-8">
+			<ul class="flex mb-4 -ml-2 md:order-1 md:ml-4 md:mb-0">
+				{
+					social.map(({ label, href, icon }) => (
+						<li>
+							<a
+								class="text-neutral-400 dark:text-neutral-600 hover:text-neutral-700 dark:hover:text-neutral-200 focus:outline-none focus:ring-4 focus:ring-neutral-200 dark:focus:ring-neutral-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+								aria-label={label}
+								href={href}
+							>
+								<Icon name={icon} class="w-5 h-5" />
+							</a>
+						</li>
+					))
+				}
+			</ul>
+			<div class="text-sm font-medium tracking-wider text-neutral-400 dark:text-neutral-600">
+				{year} • Made with <a
+					class="text-neutral-400 dark:text-neutral-600 hover:text-neutral-700 dark:hover:text-neutral-200"
+					href="https://astro.build/"
+				>
+					Astro</a
+				>.
+			</div>
+		</div>
+	</div>
+</footer>

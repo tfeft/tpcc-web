@@ -1,0 +1,53 @@
+---
+import { Picture } from '@astrojs/image/components';
+import Authors from '../atoms/Authors.astro';
+
+import { findImage } from '~/utils/images';
+import { getPermalink } from '~/utils/permalinks';
+
+const { post } = Astro.props;
+
+const image = await findImage(post.image);
+---
+
+<article class="mb-6 transition">
+	<div class="relative h-0 pb-[56.25%] lg:h-64 overflow-hidden bg-neutral-400 dark:bg-neutral-700 rounded mb-6">
+		<a href={getPermalink(post.slug, 'post')}>
+			{
+				image && (
+					<Picture
+						src={image}
+						class="object-cover w-full rounded lg:h-64 bg-neutral-400 dark:bg-neutral-700"
+						widths={[400, 900]}
+						sizes="(max-width: 900px) 400px, 900px"
+						alt={post.title}
+						aspectRatio={16 / 9}
+					/>
+				)
+			}
+		</a>
+	</div>
+	<h4
+		class="mb-2 text-base font-normal uppercase leading-snug tracking-wider sm:text-base text-primary-600 dark:text-secondary-400"
+	>
+		<a
+			class="transition duration-200 ease-in"
+			href={getPermalink(post.category, 'category')}
+		>
+			{post.category}
+		</a>
+	</h4>
+	<h3 class="mb-2 text-xl font-medium leading-snug tracking-wide sm:text-2xl font-heading">
+		<a
+			href={getPermalink(post.slug, 'post')}
+			class="transition duration-200 ease-in text-neutral-900 dark:text-neutral-50 hover:text-primary-600 dark:hover:text-secondary-400"
+		>
+			{post.title}
+		</a>
+	</h3>
+	<Authors authors={post.authors} class="text-base my-2"/>
+	<p class="text-base font-normal tracking-wide text-neutral-500 dark:text-neutral-400">
+		{post.excerpt || post.description}
+	</p>
+
+</article>

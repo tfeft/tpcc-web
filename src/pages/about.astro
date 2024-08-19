@@ -1,0 +1,18 @@
+---
+import { SITE } from '~/config.mjs';
+import { getCanonical, getRelativeLink } from '~/utils/permalinks';
+import Layout from '~/layouts/PageLayout.astro';
+import AboutContent from '~/components/widgets/AboutContent.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const meta = {
+	title: `About TPCC | ${SITE.name}`,
+	description: SITE.description,
+	canonical: getCanonical(getRelativeLink('about')),
+};
+---
+
+<Layout meta={{ meta }}>
+	<AboutContent />
+	<CallToAction />
+</Layout>
